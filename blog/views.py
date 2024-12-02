@@ -1,24 +1,22 @@
 from rest_framework.views import APIView
+from rest_framework.generics import RetrieveAPIView
 from rest_framework.response import Response
 from rest_framework import status
 from .models import BlogPost
 from .serializers import BlogPostSerializer
 
+# List all posts
 class PostListView(APIView):
     def get(self, request):
-        posts = BlogPost.objects.all().order_by('-created_at')
+        posts = BlogPost.objects.all()
         serializer = BlogPostSerializer(posts, many=True)
         return Response(serializer.data)
 
-class PostDetailView(APIView):
-    def get(self, request, pk):
-        try:
-            post = BlogPost.objects.get(pk=pk)
-            serializer = BlogPostSerializer(post)
-            return Response(serializer.data)
-        except BlogPost.DoesNotExist:
-            return Response({"error": "Post not found"}, status=status.HTTP_404_NOT_FOUND)
-
+# Retrieve a single post
+class PostDetailView(RetrieveAPIView):
+    queryset = BlogPost.objects.all()
+    serializer_class = BlogPostSerializer
+# Create a new post
 class PostCreateView(APIView):
     def post(self, request):
         serializer = BlogPostSerializer(data=request.data)

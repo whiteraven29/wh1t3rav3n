@@ -1,0 +1,69 @@
+/* Apply a clean and readable font */
+body {
+    font-family: "Merriweather", serif;
+    color: #333;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+/* Styling for Post Cards */
+.post-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    background-color: #fff;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+.post-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.post-card h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+.post-card p {
+    font-size: 16px;
+    color: #555;
+}
+
+/* Styling for Post Detail Page */
+.post-detail {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.post-detail h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+.post-detail img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .post-card {
+        padding: 12px;
+    }
+    .post-detail {
+        padding: 15px;
+    }
+}
