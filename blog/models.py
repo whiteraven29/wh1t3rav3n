@@ -2,7 +2,7 @@ from django.db import models
 
 class BlogPost(models.Model):
     title = models.CharField(max_length=255)
-    content = models.TextField()  # Supports rich text (HTML format)
+    content = models.TextField(blank=True, null=True)  # HTML content generated dynamically
     likes = models.PositiveIntegerField(default=0)
     dislikes = models.PositiveIntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -12,7 +12,7 @@ class BlogPost(models.Model):
 
 class BlogImage(models.Model):
     blog_post = models.ForeignKey(BlogPost, related_name="images", on_delete=models.CASCADE)
-    image = models.ImageField(upload_to="blog_images/")  # Adjust media folder as needed
+    image = models.ImageField(upload_to="blog_images/")
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
